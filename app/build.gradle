@@ -7,6 +7,11 @@ android {
     namespace 'com.pavlitz.diary'
     compileSdk 32
 
+//    для возможности использовать layout в объявлении фрагмента
+    dataBinding {
+        enabled = true
+    }
+
     defaultConfig {
         applicationId "com.pavlitz.diary"
         minSdk 21

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/main_activity"
-    android:name="com.pavlitz.diary.DiaryHomeFragment">
+    android:name="com.pavlitz.diary.home.DiaryHomeFragment">
 
 
 </androidx.fragment.app.FragmentContainerView>
