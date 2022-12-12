@@ -1,20 +1,27 @@
 package com.pavlitz.diary.home
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.pavlitz.diary.R
+import com.pavlitz.diary.databinding.DiaryFragmentLayoutBinding
 import com.pavlitz.diary.entryCreation.EntryCreationFragment
 
-class DiaryHomeFragment: Fragment(R.layout.diary_fragment_layout){
+class DiaryHomeFragment : Fragment() {
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        val fab: View = view.findViewById(R.id.add_new_entry_button)
-        fab.setOnClickListener { view ->
-//            Snackbar.make(view, "Here is a snackbar", Snackbar.LENGTH_LONG)
-//                .setAction("Action", null)
-//                .show()
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val binding: DiaryFragmentLayoutBinding = DataBindingUtil.inflate(
+            inflater, R.layout.diary_fragment_layout, container, false
+        )
+
+        binding.addNewEntryButton.setOnClickListener { view ->
             // TODO: add navigation
             val creationFragment = EntryCreationFragment()
             requireActivity().supportFragmentManager.beginTransaction()
@@ -22,5 +29,8 @@ class DiaryHomeFragment: Fragment(R.layout.diary_fragment_layout){
                 .addToBackStack("ok")
                 .commit()
         }
+
+        return binding.root
     }
+
 }
