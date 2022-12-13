@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.pavlitz.diary.R
-import com.pavlitz.diary.databinding.DiaryFragmentLayoutBinding
-import com.pavlitz.diary.entryCreation.EntryCreationFragment
+import com.pavlitz.diary.databinding.DiaryHomeFragmentLayoutBinding
 
 class DiaryHomeFragment : Fragment() {
 
@@ -17,17 +17,13 @@ class DiaryHomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding: DiaryFragmentLayoutBinding = DataBindingUtil.inflate(
-            inflater, R.layout.diary_fragment_layout, container, false
+        val binding: DiaryHomeFragmentLayoutBinding = DataBindingUtil.inflate(
+            inflater, R.layout.diary_home_fragment_layout, container, false
         )
 
-        binding.addNewEntryButton.setOnClickListener { view ->
-            // TODO: add navigation
-            val creationFragment = EntryCreationFragment()
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(this.id, creationFragment)
-                .addToBackStack("ok")
-                .commit()
+        binding.addNewEntryButton.setOnClickListener { view:View ->
+            val action = DiaryHomeFragmentDirections.actionDiaryHomeFragmentToEntryCreationFragment()
+            view.findNavController().navigate(action)
         }
 
         return binding.root
