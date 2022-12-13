@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.pavlitz.diary.R
@@ -22,6 +23,9 @@ class EntryCreationFragment : Fragment() {
             inflater, R.layout.entry_creation_fragment_layout,
             container, false
         )
+
+        (activity as AppCompatActivity).supportActionBar?.title =
+            getString(R.string.entry_creation_fragment_title)
 
 //        для верси андроида от 26
 //        val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")

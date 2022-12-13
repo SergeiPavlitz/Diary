@@ -2,20 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!--    <androidx.fragment.app.FragmentContainerView-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:id="@+id/main_activity"-->
-    <!--        android:name="com.pavlitz.diary.home.DiaryHomeFragment">-->
-
-
-    <!--    </androidx.fragment.app.FragmentContainerView>-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main_activity"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.fragment.app.FragmentContainerView
+        <fragment
             android:id="@+id/nav_host_fragment"
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="0dp"
