@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.pavlitz.diary.R
 import com.pavlitz.diary.databinding.EntryCreationFragmentLayoutBinding
 import java.text.SimpleDateFormat
@@ -33,6 +34,11 @@ class EntryCreationFragment : Fragment() {
         val simpleFormatter = SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault())
         val c = Calendar.getInstance().time
         binding.entryCreationDate.text = simpleFormatter.format(c)
+
+        binding.entryCreationSaveButton.setOnClickListener {view ->
+            val action = EntryCreationFragmentDirections.actionEntryCreationFragmentToDiaryHomeFragment()
+            view.findNavController().navigate(action)
+        }
         return binding.root
     }
 

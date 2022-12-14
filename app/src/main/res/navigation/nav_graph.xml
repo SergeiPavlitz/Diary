@@ -18,5 +18,11 @@
         android:id="@+id/entryCreationFragment"
         android:name="com.pavlitz.diary.entryCreation.EntryCreationFragment"
         android:label="EntryCreationFragment"
-        tools:layout="@layout/entry_creation_fragment_layout"/>
+        tools:layout="@layout/entry_creation_fragment_layout">
+        <action
+            android:id="@+id/action_entryCreationFragment_to_diaryHomeFragment"
+            app:destination="@id/diaryHomeFragment"
+            app:popUpTo="@id/diaryHomeFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
 </navigation>
