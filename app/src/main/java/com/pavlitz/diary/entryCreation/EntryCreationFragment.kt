@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -19,12 +20,14 @@ class EntryCreationFragment : Fragment() {
 
     private lateinit var viewModel: EntryCreationViewModel
 
+    private lateinit var binding: EntryCreationFragmentLayoutBinding
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding: EntryCreationFragmentLayoutBinding = DataBindingUtil.inflate(
+        binding = DataBindingUtil.inflate(
             inflater, R.layout.entry_creation_fragment_layout,
             container, false
         )
@@ -60,11 +63,40 @@ class EntryCreationFragment : Fragment() {
         }
 
         binding.entryCreationSaveButton.setOnClickListener { view ->
-            val action =
-                EntryCreationFragmentDirections.actionEntryCreationFragmentToDiaryHomeFragment()
-            view.findNavController().navigate(action)
+
+            if (viewModel.isBlanc()) {
+
+                val alert = context?.let { AlertDialog.Builder(it) }
+
+
+            } else {
+
+            }
+
         }
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.entryCreationSaveButton.setOnClickListener { view ->
+            if (viewModel.isBlanc()) {
+                val alert = context?.let {
+                    AlertDialog.Builder(it)
+                }
+                alert?.let {
+                    alert.setTitle("There are empty fields")
+                    alert.setMessage("Fill all fields")
+                    alert.setPositiveButton("OK", null)
+                    alert.show()
+                }
+            } else {
+                val action =
+                    EntryCreationFragmentDirections.actionEntryCreationFragmentToDiaryHomeFragment(
+                        viewModel.getDate(), viewModel.getTopic(), viewModel.getBody()
+                    )
+                view.findNavController().navigate(action)
+            }
+        }
+    }
 }

@@ -20,10 +20,30 @@ class EntryCreationViewModel : ViewModel() {
     val body: LiveData<String>
         get() = _body
 
-    fun setTopic(topic: String){
+    fun isBlanc(): Boolean {
+        if (body.value?.isBlank() == true && topic.value?.isBlank() == true) {
+            return true
+        }
+        return false
+    }
+
+    fun getDate(): Long {
+        return _date.value?.time ?: 0
+    }
+
+    fun getTopic(): String {
+        return _topic.value ?: ""
+    }
+
+    fun getBody(): String {
+        return _topic.value ?: ""
+    }
+
+    fun setTopic(topic: String) {
         _topic.value = topic
     }
-    fun setBody(body: String){
+
+    fun setBody(body: String) {
         _body.value = body
     }
 

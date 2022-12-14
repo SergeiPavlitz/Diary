@@ -13,6 +13,18 @@
         <action
             android:id="@+id/action_diaryHomeFragment_to_entryCreationFragment"
             app:destination="@id/entryCreationFragment" />
+        <argument
+            android:name="date_milli"
+            app:argType="long"
+            android:defaultValue="0L" />
+        <argument
+            android:name="topic"
+            app:argType="string"
+            android:defaultValue='""' />
+        <argument
+            android:name="body"
+            app:argType="string"
+            android:defaultValue='""' />
     </fragment>
     <fragment
         android:id="@+id/entryCreationFragment"
