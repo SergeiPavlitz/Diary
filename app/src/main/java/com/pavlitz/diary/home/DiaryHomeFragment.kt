@@ -7,11 +7,14 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.pavlitz.diary.R
 import com.pavlitz.diary.databinding.DiaryHomeFragmentLayoutBinding
 
 class DiaryHomeFragment : Fragment() {
+
+    private lateinit var viewModel: DiaryHomeViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -21,6 +24,8 @@ class DiaryHomeFragment : Fragment() {
         val binding: DiaryHomeFragmentLayoutBinding = DataBindingUtil.inflate(
             inflater, R.layout.diary_home_fragment_layout, container, false
         )
+
+        viewModel = ViewModelProvider(this)[DiaryHomeViewModel::class.java]
 
         (activity as AppCompatActivity).supportActionBar?.title =
             getString(R.string.diary_home_fragment_title)
