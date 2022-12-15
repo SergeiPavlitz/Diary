@@ -23,6 +23,7 @@ class DiaryDBTest {
     fun createDB() {
         val context = ApplicationProvider.getApplicationContext<Context>()
         db = Room.databaseBuilder(context, DiaryDataBase::class.java, "test_db_name").build()
+//        db = DiaryDataBase.getInstance(context)
         dao = db.diaryDataBaseDao
     }
 
@@ -32,6 +33,20 @@ class DiaryDBTest {
         db.clearAllTables()
         db.close()
     }
+
+//    @Test
+//    fun getAllTest() {
+//        val all = dao.getAll()
+//        assert(all.isNotEmpty())
+//        println(all)
+//    }
+//
+//    @Test
+//    fun getAllForViewTest(){
+//        val all = dao.getAllForView()
+//        assert(all.isNotEmpty())
+//        println(all)
+//    }
 
     @Test
     @Throws(Exception::class)
@@ -67,6 +82,5 @@ class DiaryDBTest {
         dao.clear()
         val getted = dao.get(7)
         assert(getted == null)
-
     }
 }

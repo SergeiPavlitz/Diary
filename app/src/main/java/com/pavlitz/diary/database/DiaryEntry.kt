@@ -8,10 +8,11 @@ import androidx.room.PrimaryKey
 data class DiaryEntry(
 
     @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "id")
     val id: Long = 0L,
 
     @ColumnInfo(name = "creation_date_milli")
-    val creationDate: Long = 0L,
+    var creationDate: Long = 0L,
 
     @ColumnInfo(name = "entry_topic")
     var topic: String = "",
