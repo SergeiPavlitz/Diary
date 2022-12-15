@@ -8,7 +8,7 @@ import com.pavlitz.diary.database.DiaryItemView
 
 class DiaryHomeViewModel(datasource: DiaryDataBaseDao) : ViewModel() {
 
-    private val database:DiaryDataBaseDao
+    private val database: DiaryDataBaseDao
     private val itemsViewModel: ArrayDeque<DiaryItemView>
 
     fun saveEntry(dateMilli: Long, topic: String, body: String) {
@@ -27,6 +27,11 @@ class DiaryHomeViewModel(datasource: DiaryDataBaseDao) : ViewModel() {
 
     fun getItemViewList(): ArrayDeque<DiaryItemView> {
         return itemsViewModel
+    }
+
+    fun clearEntries() {
+        database.clear()
+        itemsViewModel.clear()
     }
 
     init {

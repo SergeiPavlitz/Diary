@@ -1,10 +1,13 @@
 package com.pavlitz.diary.home
 
+import android.annotation.SuppressLint
+import android.content.DialogInterface
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -24,6 +27,7 @@ class DiaryHomeFragment : Fragment() {
 
     private val args: DiaryHomeFragmentArgs by navArgs()
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -47,6 +51,23 @@ class DiaryHomeFragment : Fragment() {
             view.findNavController().navigate(action)
         }
 
+        binding.clearButton.setOnClickListener { view: View ->
+            val alert = context?.let { AlertDialog.Builder(it) }
+            alert?.let {
+                alert.setMessage("Are you really want to clear all entries?")
+                alert.setNegativeButton("No", null)
+                alert.setPositiveButton("Yes",
+                    DialogInterface.OnClickListener { _, _ ->
+                        viewModel.clearEntries()
+                        Toast.makeText(context, "All entries are cleared", Toast.LENGTH_LONG).show()
+                        binding.recyclerView.adapter?.notifyDataSetChanged()
+                    })
+                alert.show()
+            }
+
+        }
+
+
         val adapter = DiaryEntryAdapter(viewModel.getItemViewList())
         val manager = LinearLayoutManager(activity)
         binding.recyclerView.adapter = adapter
@@ -64,10 +85,9 @@ class DiaryHomeFragment : Fragment() {
             if (topic.isNotBlank() && body.isNotBlank()) {
                 //save entry
                 viewModel.saveEntry(dateMilli, topic, body)
-
-                Log.i("DiaryHomeFragment", " received $dateMilli $topic $body")
             }
         }
-
     }
+
+
 }
