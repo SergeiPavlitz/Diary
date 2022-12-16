@@ -53,7 +53,7 @@ class DiaryDBTest {
     suspend fun writeEntryAndRead() {
         val e = DiaryEntry(7)
         dao.insert(e)
-        val getted = dao.get(7)
+        val getted = dao.get(7).value
         assert(getted != null)
         assert(e.id == getted?.id)
     }
@@ -62,13 +62,13 @@ class DiaryDBTest {
     suspend fun updateEntry() {
         val e = DiaryEntry(8, 0, "eight", "eightBody")
         dao.insert(e)
-        val getted = dao.get(8)
+        val getted = dao.get(8).value
         assert(getted != null)
         if (getted != null) {
             getted.topic = "changed"
             dao.update(getted)
         }
-        val gettedAgain = dao.get(8)
+        val gettedAgain = dao.get(8).value
         assert(gettedAgain != null)
         if (gettedAgain != null) {
             assert(gettedAgain.topic.equals("changed"))
@@ -80,7 +80,7 @@ class DiaryDBTest {
         val e = DiaryEntry(7)
         dao.insert(e)
         dao.deleteAll()
-        val getted = dao.get(7)
+        val getted = dao.get(7).value
         assert(getted == null)
     }
 }
