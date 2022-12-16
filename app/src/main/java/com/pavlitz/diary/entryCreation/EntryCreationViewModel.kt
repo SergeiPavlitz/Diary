@@ -1,27 +1,23 @@
 package com.pavlitz.diary.entryCreation
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.pavlitz.diary.database.DiaryDataBaseDao
+import com.pavlitz.diary.database.DiaryEntry
+import kotlinx.coroutines.launch
 import java.util.*
 
-class EntryCreationViewModel : ViewModel() {
+class EntryCreationViewModel(datasource: DiaryDataBaseDao) : ViewModel() {
 
+    private val database = datasource
     private val _date = MutableLiveData<Date>()
     private val _topic = MutableLiveData<String>()
     private val _body = MutableLiveData<String>()
 
-
-    val date: LiveData<Date>
-        get() = _date
-    val topic: LiveData<String>
-        get() = _topic
-    val body: LiveData<String>
-        get() = _body
-
     fun isBlanc(): Boolean {
-        if (body.value?.isBlank() == true && topic.value?.isBlank() == true) {
+        if (getBody().isBlank() && getTopic().isBlank()) {
             return true
         }
         return false
@@ -50,6 +46,16 @@ class EntryCreationViewModel : ViewModel() {
     override fun onCleared() {
         super.onCleared()
         Log.i("EntryCreationViewModel", "EntryCreationViewModel cleared")
+    }
+
+    fun saveEntry() {
+        viewModelScope.launch {
+            val d = DiaryEntry()
+            d.creationDate = getDate()
+            d.topic = getTopic()
+            d.body = getBody()
+            database.insert(d)
+        }
     }
 
     init {

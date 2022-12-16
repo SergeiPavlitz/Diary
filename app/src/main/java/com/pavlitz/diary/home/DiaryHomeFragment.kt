@@ -1,6 +1,5 @@
 package com.pavlitz.diary.home
 
-import android.annotation.SuppressLint
 import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
@@ -15,7 +14,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pavlitz.diary.R
 import com.pavlitz.diary.database.DiaryDataBase
@@ -27,9 +25,7 @@ class DiaryHomeFragment : Fragment() {
 
     private lateinit var binding: DiaryHomeFragmentLayoutBinding
 
-    private val args: DiaryHomeFragmentArgs by navArgs()
 
-    @SuppressLint("NotifyDataSetChanged")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -38,7 +34,6 @@ class DiaryHomeFragment : Fragment() {
         binding = DataBindingUtil.inflate(
             inflater, R.layout.diary_home_fragment_layout, container, false
         )
-        // Create an instance of the ViewModel Factory.
         val application = requireNotNull(this.activity).application
         val dataSource = DiaryDataBase.getInstance(application).diaryDataBaseDao
         val viewModelFactory = DiaryHomeViewModelFactory(dataSource)
@@ -63,7 +58,6 @@ class DiaryHomeFragment : Fragment() {
                     DialogInterface.OnClickListener { _, _ ->
                         viewModel.clearEntries()
                         Toast.makeText(context, "All entries are cleared", Toast.LENGTH_LONG).show()
-//                        binding.recyclerView.adapter?.notifyDataSetChanged()
                     })
                 alert.show()
             }
@@ -85,19 +79,5 @@ class DiaryHomeFragment : Fragment() {
 
         return binding.root
     }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        val topic = args.topic
-        val body = args.body
-        val dateMilli = args.dateMilli
-        if (topic != null && body != null) {
-            if (topic.isNotBlank() && body.isNotBlank()) {
-                //save entry
-                viewModel.saveEntry(dateMilli, topic, body)
-            }
-        }
-    }
-
 
 }

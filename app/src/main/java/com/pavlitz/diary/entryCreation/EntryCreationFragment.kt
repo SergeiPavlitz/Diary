@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.pavlitz.diary.R
+import com.pavlitz.diary.database.DiaryDataBase
 import com.pavlitz.diary.databinding.EntryCreationFragmentLayoutBinding
 import java.text.SimpleDateFormat
 import java.util.*
@@ -33,7 +34,10 @@ class EntryCreationFragment : Fragment() {
         )
 
         Log.i("EntryCreationFragment", "Called ViewModelProvider.get")
-        viewModel = ViewModelProvider(this)[EntryCreationViewModel::class.java]
+        val application = requireNotNull(this.activity).application
+        val dataSource = DiaryDataBase.getInstance(application).diaryDataBaseDao
+        val factory = EntryCreationViewModelFactory(dataSource)
+        viewModel = ViewModelProvider(this, factory)[EntryCreationViewModel::class.java]
 
         (activity as AppCompatActivity).supportActionBar?.title =
             getString(R.string.entry_creation_fragment_title)
@@ -42,7 +46,7 @@ class EntryCreationFragment : Fragment() {
 //        val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")
 //        val date  = LocalDateTime.now().format(formatter)
         val simpleFormatter = SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault())
-        binding.entryCreationDate.text = viewModel.date.value?.let { simpleFormatter.format(it) }
+        binding.entryCreationDate.text = simpleFormatter.format(viewModel.getDate())
 
         binding.entryCreationTopic.setOnFocusChangeListener { view, b ->
             if (view != null && !b) {
@@ -62,18 +66,6 @@ class EntryCreationFragment : Fragment() {
             }
         }
 
-        binding.entryCreationSaveButton.setOnClickListener { view ->
-
-            if (viewModel.isBlanc()) {
-
-                val alert = context?.let { AlertDialog.Builder(it) }
-
-
-            } else {
-
-            }
-
-        }
         return binding.root
     }
 
@@ -91,10 +83,9 @@ class EntryCreationFragment : Fragment() {
                     alert.show()
                 }
             } else {
+                viewModel.saveEntry()
                 val action =
-                    EntryCreationFragmentDirections.actionEntryCreationFragmentToDiaryHomeFragment(
-                        viewModel.getDate(), viewModel.getTopic(), viewModel.getBody()
-                    )
+                    EntryCreationFragmentDirections.actionEntryCreationFragmentToDiaryHomeFragment()
                 view.findNavController().navigate(action)
             }
         }
