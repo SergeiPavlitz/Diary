@@ -3,6 +3,7 @@ package com.pavlitz.diary.home
 import android.annotation.SuppressLint
 import android.content.DialogInterface
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
@@ -40,7 +42,8 @@ class DiaryHomeFragment : Fragment() {
         val application = requireNotNull(this.activity).application
         val dataSource = DiaryDataBase.getInstance(application).diaryDataBaseDao
         val viewModelFactory = DiaryHomeViewModelFactory(dataSource)
-        viewModel = ViewModelProvider(this, viewModelFactory)[DiaryHomeViewModel::class.java]
+        viewModel =
+            ViewModelProvider(requireActivity(), viewModelFactory)[DiaryHomeViewModel::class.java]
 
         (activity as AppCompatActivity).supportActionBar?.title =
             getString(R.string.diary_home_fragment_title)
@@ -60,18 +63,25 @@ class DiaryHomeFragment : Fragment() {
                     DialogInterface.OnClickListener { _, _ ->
                         viewModel.clearEntries()
                         Toast.makeText(context, "All entries are cleared", Toast.LENGTH_LONG).show()
-                        binding.recyclerView.adapter?.notifyDataSetChanged()
+//                        binding.recyclerView.adapter?.notifyDataSetChanged()
                     })
                 alert.show()
             }
 
         }
 
-
-        val adapter = DiaryEntryAdapter(viewModel.getItemViewList())
+        val adapter = DiaryEntryAdapter()
         val manager = LinearLayoutManager(activity)
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = manager
+        viewModel.items.observe(viewLifecycleOwner, Observer {
+            //работает 2 раза, по документации так, но по-моему херня какая-то
+//            https://stackoverflow.com/questions/50236778/why-livedata-observer-is-being-triggered-twice-for-a-newly-attached-observer
+            Log.i("DiaryHomeFragment", "do smth")
+            it?.let {
+                adapter.submitList(it)
+            }
+        })
 
         return binding.root
     }

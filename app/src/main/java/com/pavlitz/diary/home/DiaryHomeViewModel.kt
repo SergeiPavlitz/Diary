@@ -1,44 +1,34 @@
 package com.pavlitz.diary.home
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.pavlitz.diary.database.DiaryDataBaseDao
 import com.pavlitz.diary.database.DiaryEntry
-import com.pavlitz.diary.database.DiaryItemView
+import kotlinx.coroutines.launch
 
 class DiaryHomeViewModel(datasource: DiaryDataBaseDao) : ViewModel() {
 
-    private val database: DiaryDataBaseDao
-    private val itemsViewModel: ArrayDeque<DiaryItemView>
+    private val database = datasource
+    val items = database.getAllForView()
 
     fun saveEntry(dateMilli: Long, topic: String, body: String) {
-        val d = DiaryEntry()
-        d.creationDate = dateMilli
-        d.topic = topic
-        d.body = body
-        insert(d)
-        val dv = database.getLastInsertedByTopic(topic)
-        itemsViewModel.addFirst(dv)
+        viewModelScope.launch {
+            val d = DiaryEntry()
+            d.creationDate = dateMilli
+            d.topic = topic
+            d.body = body
+            insert(d)
+        }
     }
 
-    private fun insert(d: DiaryEntry) {
+    private suspend fun insert(d: DiaryEntry) {
         database.insert(d)
     }
 
-    fun getItemViewList(): ArrayDeque<DiaryItemView> {
-        return itemsViewModel
-    }
-
     fun clearEntries() {
-        database.clear()
-        itemsViewModel.clear()
+        viewModelScope.launch {
+            database.clear()
+        }
     }
 
-    init {
-        database = datasource
-        itemsViewModel = ArrayDeque(database.getAllForView())
-        Log.i("DiaryHomeViewModel", "DiaryHomeViewModel created!")
-        Log.i("DiaryHomeViewModel", "is empty " + (itemsViewModel.isEmpty()))
-
-    }
 }

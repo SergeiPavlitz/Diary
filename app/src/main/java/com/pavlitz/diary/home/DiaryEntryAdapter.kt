@@ -11,10 +11,9 @@ import com.pavlitz.diary.R
 import com.pavlitz.diary.database.DiaryItemView
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayDeque
 
-//class DiaryEntryAdapter(private val list: List<DiaryItemView>):RecyclerView.Adapter<DiaryEntryAdapter.ViewHolder>(){
-class DiaryEntryAdapter(private val list: ArrayDeque<DiaryItemView>):
+
+class DiaryEntryAdapter():
     ListAdapter<DiaryItemView, DiaryEntryAdapter.ViewHolder>(DiaryItemDiffCallback()){
 
 
@@ -26,14 +25,10 @@ class DiaryEntryAdapter(private val list: ArrayDeque<DiaryItemView>):
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val itemViewModel = list[position]
+        val itemViewModel = getItem(position)
         val dateString = simpleFormatter.format(itemViewModel.date)
         holder.date.text = dateString
         holder.topic.text = itemViewModel.topic
-    }
-
-    override fun getItemCount(): Int {
-       return list.size
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
