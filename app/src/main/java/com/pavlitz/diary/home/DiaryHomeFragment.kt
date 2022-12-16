@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pavlitz.diary.R
 import com.pavlitz.diary.database.DiaryDataBase
@@ -30,7 +31,7 @@ class DiaryHomeFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = DataBindingUtil.inflate(
             inflater, R.layout.diary_home_fragment_layout, container, false
         )
@@ -52,7 +53,7 @@ class DiaryHomeFragment : Fragment() {
         binding.clearButton.setOnClickListener { view: View ->
             val alert = context?.let { AlertDialog.Builder(it) }
             alert?.let {
-                alert.setMessage("Are you really want to clear all entries?")
+                alert.setMessage("Are you really want to delete all entries?")
                 alert.setNegativeButton("No", null)
                 alert.setPositiveButton("Yes",
                     DialogInterface.OnClickListener { _, _ ->
@@ -64,7 +65,11 @@ class DiaryHomeFragment : Fragment() {
 
         }
 
-        val adapter = DiaryEntryAdapter()
+        val adapter = DiaryEntryAdapter(DiaryItemViewListener { id ->
+            Log.i("DiaryHomeFragment", "itemViewModel clicked $id")
+            val action = DiaryHomeFragmentDirections.actionDiaryHomeFragmentToEntryEditFragment(id)
+            this.findNavController().navigate(action)
+        })
         val manager = LinearLayoutManager(activity)
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = manager

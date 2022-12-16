@@ -13,8 +13,10 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class DiaryEntryAdapter():
-    ListAdapter<DiaryItemView, DiaryEntryAdapter.ViewHolder>(DiaryItemDiffCallback()){
+//class DiaryEntryAdapter():
+//    ListAdapter<DiaryItemView, DiaryEntryAdapter.ViewHolder>(DiaryItemDiffCallback()){
+    class DiaryEntryAdapter(private val clickListener: DiaryItemViewListener):
+        ListAdapter<DiaryItemView, DiaryEntryAdapter.ViewHolder>(DiaryItemDiffCallback()){
 
 
     private val simpleFormatter = SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault())
@@ -29,6 +31,9 @@ class DiaryEntryAdapter():
         val dateString = simpleFormatter.format(itemViewModel.date)
         holder.date.text = dateString
         holder.topic.text = itemViewModel.topic
+        holder.itemView.setOnClickListener {
+            clickListener.onClick(itemViewModel)
+        }
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view){

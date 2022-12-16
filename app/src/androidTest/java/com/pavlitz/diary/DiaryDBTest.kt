@@ -50,7 +50,7 @@ class DiaryDBTest {
 
     @Test
     @Throws(Exception::class)
-    fun writeEntryAndRead() {
+    suspend fun writeEntryAndRead() {
         val e = DiaryEntry(7)
         dao.insert(e)
         val getted = dao.get(7)
@@ -59,7 +59,7 @@ class DiaryDBTest {
     }
 
     @Test
-    fun updateEntry() {
+    suspend fun updateEntry() {
         val e = DiaryEntry(8, 0, "eight", "eightBody")
         dao.insert(e)
         val getted = dao.get(8)
@@ -76,10 +76,10 @@ class DiaryDBTest {
     }
 
     @Test
-    fun clearAll() {
+    suspend fun clearAll() {
         val e = DiaryEntry(7)
         dao.insert(e)
-        dao.clear()
+        dao.deleteAll()
         val getted = dao.get(7)
         assert(getted == null)
     }

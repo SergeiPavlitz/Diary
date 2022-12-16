@@ -2,12 +2,15 @@
     <string name="app_name">Diary</string>
 
 <!--    Fragment titles-->
-    <string name="entry_creation_fragment_title">New entry...</string>
+    <string name="entry_creation_fragment_title">New entry…</string>
+    <string name="entry_edit_fragment_title">Edit form…</string>
     <string name="diary_home_fragment_title">Home</string>
 
 
 <!--    Button labels-->
     <string name="clearButtonLabel">Clear</string>
     <string name="entryCreationSaveButtonLabel">Save</string>
+    <string name="entryEditModifyButtonLabel">Update</string>
+    <string name="entryEditDeleteButtonLabel">Delete</string>
 
 </resources>

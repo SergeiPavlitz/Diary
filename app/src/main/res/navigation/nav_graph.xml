@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_diaryHomeFragment_to_entryCreationFragment"
             app:destination="@id/entryCreationFragment" />
+        <action
+            android:id="@+id/action_diaryHomeFragment_to_entryEditFragment"
+            app:destination="@id/entryEditFragment" />
     </fragment>
     <fragment
         android:id="@+id/entryCreationFragment"
@@ -24,5 +27,17 @@
             app:destination="@id/diaryHomeFragment"
             app:popUpTo="@id/diaryHomeFragment"
             app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/entryEditFragment"
+        android:name="com.pavlitz.diary.entryEdit.EntryEditFragment"
+        android:label="EntryEditFragment"
+        tools:layout="@layout/entry_edit_fragment_layout">
+        <argument
+            android:name="diaryEntryId"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_entryEditFragment_to_diaryHomeFragment"
+            app:destination="@id/diaryHomeFragment" />
     </fragment>
 </navigation>
