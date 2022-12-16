@@ -55,7 +55,7 @@ class EntryCreationFragment : Fragment() {
 
         binding.entryCreationBody.setOnFocusChangeListener { view, b ->
             if (view != null && !b) {
-                val text = binding.entryCreationTopic.text
+                val text = binding.entryCreationBody.text
                 if (text.isNotBlank()) {
                     viewModel.setBody(text.toString())
                 }
