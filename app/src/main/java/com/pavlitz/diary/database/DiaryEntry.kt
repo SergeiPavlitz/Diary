@@ -18,6 +18,9 @@ data class DiaryEntry(
     var topic: String = "",
 
     @ColumnInfo(name = "entry_body")
-    var body: String = ""
+    var body: String = "",
+
+    @ColumnInfo(name = "entry_mood")
+    var mood: String = ""
 
 )

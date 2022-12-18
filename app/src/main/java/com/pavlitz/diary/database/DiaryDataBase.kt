@@ -5,7 +5,10 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [DiaryEntry::class], version = 1, exportSchema = false)
+/**
+ * Очень важно
+ */
+@Database(entities = [DiaryEntry::class], version = 2)
 abstract class DiaryDataBase : RoomDatabase() {
 
     abstract val diaryDataBaseDao: DiaryDataBaseDao
@@ -24,8 +27,9 @@ abstract class DiaryDataBase : RoomDatabase() {
                         // Migration is not part of this lesson. You can learn more about
                         // migration with Room in this blog post:
                         // https://medium.com/androiddevelopers/understanding-migrations-with-room-f01e04b07929
-                        .fallbackToDestructiveMigration()
+//                        .fallbackToDestructiveMigration()
 //                        .allowMainThreadQueries()
+                        .addMigrations(MIGRATION_1_2)
                         .build()
                     INSTANCE = instance
                 }
