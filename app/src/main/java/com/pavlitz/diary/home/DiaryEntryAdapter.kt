@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.pavlitz.diary.R
-import com.pavlitz.diary.database.DiaryItemView
+import com.pavlitz.diary.database.diary.DiaryItemView
 import java.text.SimpleDateFormat
 import java.util.*
 

@@ -1,0 +1,23 @@
+package com.pavlitz.diary.database.auth
+
+import androidx.lifecycle.LiveData
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.Query
+import androidx.room.Update
+
+@Dao
+interface AuthDataBaseDao {
+    @Insert
+    suspend fun insert(entry: AuthEntity)
+
+    @Update
+    suspend fun update(entry: AuthEntity)
+
+    @Query("select * from diary_entries_table order by id limit 1")
+    fun getAuth(): LiveData<AuthEntity>
+
+    @Query("delete from diary_entries_table")
+    suspend fun delete()
+
+}

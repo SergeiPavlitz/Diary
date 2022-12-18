@@ -1,4 +1,4 @@
-package com.pavlitz.diary.database
+package com.pavlitz.diary.database.diary
 
 import android.content.Context
 import androidx.room.Database

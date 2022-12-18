@@ -5,6 +5,7 @@
     <string name="entry_creation_fragment_title">New entry…</string>
     <string name="entry_edit_fragment_title">Edit form…</string>
     <string name="diary_home_fragment_title">Home</string>
+    <string name="login_fragment_title">Login</string>
 
 
 <!--    Button labels-->
@@ -23,5 +24,8 @@
     <string name="entry_edit_topic_hint">Topic</string>
     <string name="entry_edit_mood_hint">Mood</string>
     <string name="entry_edit_body_hint">Enter your text here…</string>
+
+<!--    Login hints-->
+    <string name="login_password_field_hint">Enter pin</string>
 
 </resources>

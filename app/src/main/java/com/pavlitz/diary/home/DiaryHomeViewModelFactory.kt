@@ -2,7 +2,7 @@ package com.pavlitz.diary.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.pavlitz.diary.database.DiaryDataBaseDao
+import com.pavlitz.diary.database.diary.DiaryDataBaseDao
 
 class DiaryHomeViewModelFactory(private val dataSource: DiaryDataBaseDao): ViewModelProvider.Factory {
 

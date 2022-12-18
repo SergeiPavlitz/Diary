@@ -2,7 +2,7 @@ package com.pavlitz.diary.entryEdit
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.pavlitz.diary.database.DiaryDataBaseDao
+import com.pavlitz.diary.database.diary.DiaryDataBaseDao
 import kotlinx.coroutines.launch
 
 class EntryEditViewModel(private val key: Long = 0L, datasource: DiaryDataBaseDao) : ViewModel() {

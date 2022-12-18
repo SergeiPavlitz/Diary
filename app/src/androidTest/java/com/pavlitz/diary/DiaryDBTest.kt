@@ -4,9 +4,9 @@ import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.pavlitz.diary.database.DiaryDataBase
-import com.pavlitz.diary.database.DiaryDataBaseDao
-import com.pavlitz.diary.database.DiaryEntry
+import com.pavlitz.diary.database.diary.DiaryDataBase
+import com.pavlitz.diary.database.diary.DiaryDataBaseDao
+import com.pavlitz.diary.database.diary.DiaryEntry
 import org.junit.After
 import org.junit.Before
 import org.junit.Test

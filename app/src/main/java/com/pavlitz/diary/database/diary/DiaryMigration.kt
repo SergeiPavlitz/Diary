@@ -1,4 +1,4 @@
-package com.pavlitz.diary.database
+package com.pavlitz.diary.database.diary
 
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase

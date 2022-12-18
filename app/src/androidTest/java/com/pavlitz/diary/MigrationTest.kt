@@ -4,8 +4,8 @@ import androidx.room.testing.MigrationTestHelper
 import androidx.sqlite.db.framework.FrameworkSQLiteOpenHelperFactory
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import com.pavlitz.diary.database.DiaryDataBase
-import com.pavlitz.diary.database.MIGRATION_1_2
+import com.pavlitz.diary.database.diary.DiaryDataBase
+import com.pavlitz.diary.database.diary.MIGRATION_1_2
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith

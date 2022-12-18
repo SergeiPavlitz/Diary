@@ -2,7 +2,7 @@ package com.pavlitz.diary.entryCreation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.pavlitz.diary.database.DiaryDataBaseDao
+import com.pavlitz.diary.database.diary.DiaryDataBaseDao
 
 class EntryCreationViewModelFactory(private val dataSource: DiaryDataBaseDao) :
     ViewModelProvider.Factory {

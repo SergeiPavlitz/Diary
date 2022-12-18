@@ -4,8 +4,8 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.pavlitz.diary.database.DiaryDataBaseDao
-import com.pavlitz.diary.database.DiaryEntry
+import com.pavlitz.diary.database.diary.DiaryDataBaseDao
+import com.pavlitz.diary.database.diary.DiaryEntry
 import kotlinx.coroutines.launch
 import java.util.*
 

@@ -16,6 +16,10 @@
         <action
             android:id="@+id/action_diaryHomeFragment_to_entryEditFragment"
             app:destination="@id/entryEditFragment" />
+        <action
+            android:id="@+id/action_diaryHomeFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/entryCreationFragment"
@@ -39,5 +43,37 @@
         <action
             android:id="@+id/action_entryEditFragment_to_diaryHomeFragment"
             app:destination="@id/diaryHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.pavlitz.diary.login.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/login_fragment_layout">
+        <action
+            android:id="@+id/action_loginFragment_to_diaryHomeFragment"
+            app:destination="@id/diaryHomeFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_pinFragment"
+            app:destination="@id/pinFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pinFragment"
+        android:name="com.pavlitz.diary.login.PinFragment"
+        android:label="PinFragment"
+        tools:layout="@layout/pin_fragment_layout">
+        <action
+            android:id="@+id/action_pinFragment_to_pinConfirmFragment"
+            app:destination="@id/pinConfirmFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pinConfirmFragment"
+        android:name="com.pavlitz.diary.login.PinConfirmFragment"
+        android:label="PinConfirmFragment"
+        tools:layout="@layout/pin_confirm_fragment_layout">
+        <action
+            android:id="@+id/action_pinConfirmFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="false" />
     </fragment>
 </navigation>
