@@ -13,4 +13,15 @@
     <string name="entryEditModifyButtonLabel">Update</string>
     <string name="entryEditDeleteButtonLabel">Delete</string>
 
+<!--    Creation form hints-->
+    <string name="entry_creation_date_hint">date</string>
+    <string name="entry_creation_topic_hint">Topic</string>
+    <string name="entry_creation_mood_hint">Mood</string>
+    <string name="entry_creation_body_hint">Enter your text here…</string>
+
+    <!--    Edit form hints-->
+    <string name="entry_edit_topic_hint">Topic</string>
+    <string name="entry_edit_mood_hint">Mood</string>
+    <string name="entry_edit_body_hint">Enter your text here…</string>
+
 </resources>

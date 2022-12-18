@@ -57,6 +57,15 @@ class EntryCreationFragment : Fragment() {
             }
         }
 
+        binding.entryCreationMood.setOnFocusChangeListener { view, b ->
+            if (view != null && !b) {
+                val text = binding.entryCreationMood.text
+                if (text.isNotBlank()) {
+                    viewModel.setMood(text.toString())
+                }
+            }
+        }
+
         binding.entryCreationBody.setOnFocusChangeListener { view, b ->
             if (view != null && !b) {
                 val text = binding.entryCreationBody.text
@@ -66,12 +75,11 @@ class EntryCreationFragment : Fragment() {
             }
         }
 
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         binding.entryCreationSaveButton.setOnClickListener { view ->
+            binding.entryCreationTopic.clearFocus()
+            binding.entryCreationMood.clearFocus()
+            binding.entryCreationBody.clearFocus()
+            binding.entryCreationSaveButton.requestFocus()
             if (viewModel.isBlanc()) {
                 val alert = context?.let {
                     AlertDialog.Builder(it)
@@ -89,5 +97,7 @@ class EntryCreationFragment : Fragment() {
                 view.findNavController().navigate(action)
             }
         }
+
+        return binding.root
     }
 }

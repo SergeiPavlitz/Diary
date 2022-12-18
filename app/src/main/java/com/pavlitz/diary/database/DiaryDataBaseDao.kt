@@ -18,7 +18,7 @@ interface DiaryDataBaseDao {
     @Query("select * from diary_entries_table where id = :key")
     fun get(key: Long): LiveData<DiaryEntry>
 
-    @Query("select id, creation_date_milli, entry_topic from diary_entries_table where entry_topic = :topic order by id limit 1")
+    @Query("select id, creation_date_milli, entry_topic, entry_mood from diary_entries_table where entry_topic = :topic order by id limit 1")
     suspend fun getLastInsertedByTopic(topic: String): DiaryItemView
 
     @Query("delete from diary_entries_table")
@@ -33,7 +33,7 @@ interface DiaryDataBaseDao {
     @Query("select * from diary_entries_table order by id desc")
     suspend fun getAll(): List<DiaryEntry>
 
-    @Query("select id, creation_date_milli, entry_topic from diary_entries_table order by id desc")
+    @Query("select id, creation_date_milli, entry_topic, entry_mood from diary_entries_table order by id desc")
     fun getAllForView(): LiveData<MutableList<DiaryItemView>>
 //
 //    @Query("select id, creation_date_milli, entry_topic from diary_entries_table order by id desc")

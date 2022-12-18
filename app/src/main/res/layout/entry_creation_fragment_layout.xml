@@ -11,7 +11,7 @@
             android:id="@+id/entry_creation_date"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:hint="@string/entry_creation_date_hint"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -22,12 +22,29 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:gravity="start|top"
-            android:hint="Topic"
+            android:hint="@string/entry_creation_topic_hint"
             android:inputType="textMultiLine"
             android:minHeight="48dp"
+            android:imeOptions="actionDone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/entry_creation_date" />
+
+        <EditText
+            android:id="@+id/entry_creation_mood"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="@string/entry_creation_mood_hint"
+            android:inputType="textMultiLine"
+            android:minHeight="48dp"
+            android:imeOptions="actionDone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/entry_creation_topic"
+            app:layout_constraintBottom_toTopOf="@+id/entry_creation_body"
+            />
 
         <EditText
             android:id="@+id/entry_creation_body"
@@ -35,12 +52,13 @@
             android:layout_height="0dp"
             android:ems="10"
             android:gravity="start|top"
-            android:hint="Enter your text here..."
+            android:hint="@string/entry_creation_body_hint"
             android:inputType="textMultiLine"
+            android:imeOptions="actionDone"
             app:layout_constraintBottom_toTopOf="@+id/entry_creation_save_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/entry_creation_topic" />
+            app:layout_constraintTop_toBottomOf="@+id/entry_creation_mood" />
 
         <Button
             android:id="@+id/entry_creation_save_button"

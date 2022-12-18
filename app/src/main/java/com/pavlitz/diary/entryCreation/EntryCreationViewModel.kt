@@ -14,10 +14,11 @@ class EntryCreationViewModel(datasource: DiaryDataBaseDao) : ViewModel() {
     private val database = datasource
     private val _date = MutableLiveData<Date>()
     private val _topic = MutableLiveData<String>()
+    private val _mood = MutableLiveData<String>()
     private val _body = MutableLiveData<String>()
 
     fun isBlanc(): Boolean {
-        if (getBody().isBlank() && getTopic().isBlank()) {
+        if (getBody().isBlank() || getTopic().isBlank() || getMood().isBlank()) {
             return true
         }
         return false
@@ -31,21 +32,24 @@ class EntryCreationViewModel(datasource: DiaryDataBaseDao) : ViewModel() {
         return _topic.value ?: ""
     }
 
+    fun getMood(): String {
+        return _mood.value ?: ""
+    }
+
     fun getBody(): String {
-        return _topic.value ?: ""
+        return _body.value ?: ""
     }
 
     fun setTopic(topic: String) {
         _topic.value = topic
     }
 
-    fun setBody(body: String) {
-        _body.value = body
+    fun setMood(mood: String) {
+        _mood.value = mood
     }
 
-    override fun onCleared() {
-        super.onCleared()
-        Log.i("EntryCreationViewModel", "EntryCreationViewModel cleared")
+    fun setBody(body: String) {
+        _body.value = body
     }
 
     fun saveEntry() {
@@ -54,6 +58,7 @@ class EntryCreationViewModel(datasource: DiaryDataBaseDao) : ViewModel() {
             d.creationDate = getDate()
             d.topic = getTopic()
             d.body = getBody()
+            d.mood = getMood()
             database.insert(d)
         }
     }
@@ -62,6 +67,7 @@ class EntryCreationViewModel(datasource: DiaryDataBaseDao) : ViewModel() {
         Log.i("EntryCreationViewModel", "EntryCreationViewModel created!")
         _date.value = Calendar.getInstance().time
         _topic.value = ""
+        _mood.value = ""
         _body.value = ""
     }
 }

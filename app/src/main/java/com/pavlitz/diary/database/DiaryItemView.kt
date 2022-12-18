@@ -8,6 +8,7 @@ data class DiaryItemView(
     @ColumnInfo(name = "creation_date_milli")
     val date: Long,
     @ColumnInfo(name = "entry_topic")
-    val topic: String) {
-
-}
+    val topic: String,
+    @ColumnInfo(name = "entry_mood")
+    val mood: String
+    )

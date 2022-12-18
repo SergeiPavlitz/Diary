@@ -46,15 +46,17 @@ class EntryEditFragment : Fragment() {
         viewModel.entryLiveData.observe(viewLifecycleOwner, Observer {
             it?.let {
                 binding.entryEditTopic.setText(it.topic)
+                binding.entryEditMood.setText(it.mood)
                 binding.entryEditBody.setText(it.body)
             }
         })
 
         binding.entryEditModifyButton.setOnClickListener(View.OnClickListener { view ->
             val body = binding.entryEditBody.text
+            val mood = binding.entryEditMood.text
             val topic = binding.entryEditTopic.text
-            if (body.isNotBlank() && topic.isNotBlank()) {
-                viewModel.updateEntry(body.toString(), topic.toString())
+            if (body.isNotBlank() && topic.isNotBlank() && mood.isNotBlank()) {
+                viewModel.updateEntry(body.toString(),mood.toString(), topic.toString())
                 Toast.makeText(context, "Entry updated", Toast.LENGTH_LONG).show()
                 val action =
                     EntryEditFragmentDirections.actionEntryEditFragmentToDiaryHomeFragment()
@@ -72,7 +74,7 @@ class EntryEditFragment : Fragment() {
         binding.entryEditDeleteButton.setOnClickListener(View.OnClickListener { view ->
             val alert = context?.let { AlertDialog.Builder(it) }
             alert?.let {
-                alert.setMessage("Are you really want to delete all entry?")
+                alert.setMessage("Are you really want to delete the entry?")
                 alert.setNegativeButton("No", null)
                 alert.setPositiveButton("Yes",
                     DialogInterface.OnClickListener { _, _ ->

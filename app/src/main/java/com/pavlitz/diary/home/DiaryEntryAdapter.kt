@@ -13,16 +13,15 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-//class DiaryEntryAdapter():
-//    ListAdapter<DiaryItemView, DiaryEntryAdapter.ViewHolder>(DiaryItemDiffCallback()){
-    class DiaryEntryAdapter(private val clickListener: DiaryItemViewListener):
-        ListAdapter<DiaryItemView, DiaryEntryAdapter.ViewHolder>(DiaryItemDiffCallback()){
+class DiaryEntryAdapter(private val clickListener: DiaryItemViewListener) :
+    ListAdapter<DiaryItemView, DiaryEntryAdapter.ViewHolder>(DiaryItemDiffCallback()) {
 
 
     private val simpleFormatter = SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault())
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item_diary_entry, parent, false)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.list_item_diary_entry, parent, false)
         return ViewHolder(view)
     }
 
@@ -31,14 +30,16 @@ import java.util.*
         val dateString = simpleFormatter.format(itemViewModel.date)
         holder.date.text = dateString
         holder.topic.text = itemViewModel.topic
+        holder.mood.text = itemViewModel.mood
         holder.itemView.setOnClickListener {
             clickListener.onClick(itemViewModel)
         }
     }
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val date: TextView = view.findViewById(R.id.list_item_date)
         val topic: TextView = view.findViewById(R.id.list_item_topic)
+        val mood: TextView = view.findViewById(R.id.list_item_mood)
     }
 
 

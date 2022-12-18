@@ -6,14 +6,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <EditText
             android:id="@+id/entry_edit_topic"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
             android:gravity="start|top"
-            android:hint="Topic"
+            android:hint="@string/entry_edit_topic_hint"
             android:inputType="textMultiLine"
             android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -21,17 +20,31 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
+            android:id="@+id/entry_edit_mood"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="@string/entry_edit_mood_hint"
+            android:inputType="textMultiLine"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/entry_edit_topic"
+            app:layout_constraintBottom_toTopOf="@+id/entry_edit_body"/>
+
+        <EditText
             android:id="@+id/entry_edit_body"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:ems="10"
             android:gravity="start|top"
-            android:hint="Enter your text here..."
+            android:hint="@string/entry_edit_body_hint"
             android:inputType="textMultiLine"
             app:layout_constraintBottom_toTopOf="@+id/entry_edit_modify_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/entry_edit_topic" />
+            app:layout_constraintTop_toBottomOf="@+id/entry_edit_mood" />
 
         <Button
             android:id="@+id/entry_edit_modify_button"

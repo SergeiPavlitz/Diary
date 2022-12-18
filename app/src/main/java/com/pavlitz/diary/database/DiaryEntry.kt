@@ -4,6 +4,10 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+/**
+ * Очень важно менять версию класса БД перед изменением ентити!!!
+ * Смотри описание DiaryDataBase
+ */
 @Entity(tableName = "diary_entries_table")
 data class DiaryEntry(
 
