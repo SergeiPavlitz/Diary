@@ -62,6 +62,13 @@ class LoginFragment : Fragment() {
             }
         })
 
+
+        return binding.root
+    }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         viewModel.authorization.observe(viewLifecycleOwner, Observer {
             if (it != null) {
                 binding.loginCreatePinButton.visibility = View.GONE
@@ -72,8 +79,6 @@ class LoginFragment : Fragment() {
                 goToPinFragment()
             }
         })
-
-        return binding.root
     }
 
     private fun goToPinFragment() {
