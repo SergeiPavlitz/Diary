@@ -9,6 +9,7 @@
         android:id="@+id/diaryHomeFragment"
         android:name="com.pavlitz.diary.home.DiaryHomeFragment"
         android:label="@string/diary_home_fragment_title"
+        android:fontFamily="@font/roboto_bold"
         tools:layout="@layout/diary_home_fragment_layout">
         <action
             android:id="@+id/action_diaryHomeFragment_to_entryCreationFragment"
@@ -25,6 +26,7 @@
         android:id="@+id/entryCreationFragment"
         android:name="com.pavlitz.diary.entryCreation.EntryCreationFragment"
         android:label="@string/entry_creation_fragment_title"
+        android:fontFamily="@font/roboto_bold"
         tools:layout="@layout/entry_creation_fragment_layout">
         <action
             android:id="@+id/action_entryCreationFragment_to_diaryHomeFragment"
@@ -36,6 +38,7 @@
         android:id="@+id/entryEditFragment"
         android:name="com.pavlitz.diary.entryEdit.EntryEditFragment"
         android:label="@string/entry_edit_fragment_title"
+        android:fontFamily="@font/roboto_bold"
         tools:layout="@layout/entry_edit_fragment_layout">
         <argument
             android:name="diaryEntryId"
@@ -48,6 +51,7 @@
         android:id="@+id/loginFragment"
         android:name="com.pavlitz.diary.login.LoginFragment"
         android:label="@string/login_fragment_title"
+        android:fontFamily="@font/roboto_bold"
         tools:layout="@layout/login_fragment_layout">
         <action
             android:id="@+id/action_loginFragment_to_diaryHomeFragment"
@@ -60,6 +64,7 @@
         android:id="@+id/pinFragment"
         android:name="com.pavlitz.diary.login.PinFragment"
         android:label="@string/pin_fragment_title"
+        android:fontFamily="@font/roboto_bold"
         tools:layout="@layout/pin_fragment_layout">
         <action
             android:id="@+id/action_pinFragment_to_pinConfirmFragment"
@@ -69,6 +74,7 @@
         android:id="@+id/pinConfirmFragment"
         android:name="com.pavlitz.diary.login.PinConfirmFragment"
         android:label="@string/pin_confirm_fragment_title"
+        android:fontFamily="@font/roboto_bold"
         tools:layout="@layout/pin_confirm_fragment_layout">
         <action
             android:id="@+id/action_pinConfirmFragment_to_loginFragment"

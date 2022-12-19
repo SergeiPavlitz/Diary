@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -10,7 +11,10 @@
             android:id="@+id/pin_confirm_fragment_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Confirm pin"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/pin_confirm_fragment_title"
+            android:textColorLink="@color/mediumSeaGreen"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -22,12 +26,15 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:ems="10"
+            android:fontFamily="@font/roboto"
             android:inputType="numberPassword"
             android:maxLength="4"
             android:minHeight="48dp"
+            android:textColorLink="@color/mediumSeaGreen"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pin_confirm_fragment_text" />
+            app:layout_constraintTop_toBottomOf="@+id/pin_confirm_fragment_text"
+            tools:ignore="SpeakableTextPresentCheck" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

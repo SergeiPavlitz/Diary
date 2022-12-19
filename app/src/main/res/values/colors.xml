@@ -8,5 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="mediumSeaGreen">#3CB371</color>
-    <color name="colorAccent">#AF3232</color>
+    <color name="colorAccent">@color/mediumSeaGreen</color>
+    <color name="kindOfRed">#AF3232</color>
 </resources>

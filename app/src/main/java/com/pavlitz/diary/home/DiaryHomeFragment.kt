@@ -72,6 +72,8 @@ class DiaryHomeFragment : Fragment() {
         val manager = LinearLayoutManager(activity)
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = manager
+        val spacingItemDecorator = SpacingItemDecorator(5)
+        binding.recyclerView.addItemDecoration(spacingItemDecorator)
         viewModel.items.observe(viewLifecycleOwner, Observer {
             //работает 2 раза, по документации так, но по-моему херня какая-то
 //            https://stackoverflow.com/questions/50236778/why-livedata-observer-is-being-triggered-twice-for-a-newly-attached-observer
