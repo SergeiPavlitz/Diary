@@ -14,10 +14,10 @@ interface AuthDataBaseDao {
     @Update
     suspend fun update(entry: AuthEntity)
 
-    @Query("select * from diary_entries_table order by id limit 1")
+    @Query("select * from auth_table order by id limit 1")
     fun getAuth(): LiveData<AuthEntity>
 
-    @Query("delete from diary_entries_table")
+    @Query("delete from auth_table")
     suspend fun delete()
 
 }

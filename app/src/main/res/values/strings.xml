@@ -6,6 +6,8 @@
     <string name="entry_edit_fragment_title">Edit form…</string>
     <string name="diary_home_fragment_title">Home</string>
     <string name="login_fragment_title">Login</string>
+    <string name="pin_fragment_title">Create pin</string>
+    <string name="pin_confirm_fragment_title">Confirm pin</string>
 
 
 <!--    Button labels-->

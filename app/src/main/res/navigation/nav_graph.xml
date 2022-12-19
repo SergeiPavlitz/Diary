@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/diaryHomeFragment">
+    app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/diaryHomeFragment"
         android:name="com.pavlitz.diary.home.DiaryHomeFragment"
-        android:label="DiaryHomeFragment"
+        android:label="@string/diary_home_fragment_title"
         tools:layout="@layout/diary_home_fragment_layout">
         <action
             android:id="@+id/action_diaryHomeFragment_to_entryCreationFragment"
@@ -24,7 +24,7 @@
     <fragment
         android:id="@+id/entryCreationFragment"
         android:name="com.pavlitz.diary.entryCreation.EntryCreationFragment"
-        android:label="EntryCreationFragment"
+        android:label="@string/entry_creation_fragment_title"
         tools:layout="@layout/entry_creation_fragment_layout">
         <action
             android:id="@+id/action_entryCreationFragment_to_diaryHomeFragment"
@@ -35,7 +35,7 @@
     <fragment
         android:id="@+id/entryEditFragment"
         android:name="com.pavlitz.diary.entryEdit.EntryEditFragment"
-        android:label="EntryEditFragment"
+        android:label="@string/entry_edit_fragment_title"
         tools:layout="@layout/entry_edit_fragment_layout">
         <argument
             android:name="diaryEntryId"
@@ -47,7 +47,7 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.pavlitz.diary.login.LoginFragment"
-        android:label="LoginFragment"
+        android:label="@string/login_fragment_title"
         tools:layout="@layout/login_fragment_layout">
         <action
             android:id="@+id/action_loginFragment_to_diaryHomeFragment"
@@ -59,7 +59,7 @@
     <fragment
         android:id="@+id/pinFragment"
         android:name="com.pavlitz.diary.login.PinFragment"
-        android:label="PinFragment"
+        android:label="@string/pin_fragment_title"
         tools:layout="@layout/pin_fragment_layout">
         <action
             android:id="@+id/action_pinFragment_to_pinConfirmFragment"
@@ -68,12 +68,10 @@
     <fragment
         android:id="@+id/pinConfirmFragment"
         android:name="com.pavlitz.diary.login.PinConfirmFragment"
-        android:label="PinConfirmFragment"
+        android:label="@string/pin_confirm_fragment_title"
         tools:layout="@layout/pin_confirm_fragment_layout">
         <action
             android:id="@+id/action_pinConfirmFragment_to_loginFragment"
-            app:destination="@id/loginFragment"
-            app:popUpTo="@id/loginFragment"
-            app:popUpToInclusive="false" />
+            app:destination="@id/loginFragment" />
     </fragment>
 </navigation>

@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [AuthEntity::class], version = 1, exportSchema = false)
+@Database(entities = [AuthEntity::class], version = 1)
 abstract class AuthDataBase : RoomDatabase() {
 
     abstract val authDataBaseDao: AuthDataBaseDao
@@ -20,7 +20,7 @@ abstract class AuthDataBase : RoomDatabase() {
                 var instance = INSTANCE
                 if (instance == null) {
                     instance = Room.databaseBuilder(context, AuthDataBase::class.java, "auth_db")
-                        .fallbackToDestructiveMigration()
+//                        .fallbackToDestructiveMigration()
 //                        .allowMainThreadQueries()
 //                        .addMigrations(MIGRATION_1_2)
                         .build()

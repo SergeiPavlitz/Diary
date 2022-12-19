@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -39,8 +38,8 @@ class EntryCreationFragment : Fragment() {
         val factory = EntryCreationViewModelFactory(dataSource)
         viewModel = ViewModelProvider(this, factory)[EntryCreationViewModel::class.java]
 
-        (activity as AppCompatActivity).supportActionBar?.title =
-            getString(R.string.entry_creation_fragment_title)
+//        (activity as AppCompatActivity).supportActionBar?.title =
+//            getString(R.string.entry_creation_fragment_title)
 
 //        для верси андроида от 26
 //        val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")

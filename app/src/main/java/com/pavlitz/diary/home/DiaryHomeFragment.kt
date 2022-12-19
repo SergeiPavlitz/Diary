@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -41,8 +40,8 @@ class DiaryHomeFragment : Fragment() {
         viewModel =
             ViewModelProvider(requireActivity(), viewModelFactory)[DiaryHomeViewModel::class.java]
 
-        (activity as AppCompatActivity).supportActionBar?.title =
-            getString(R.string.diary_home_fragment_title)
+//        (activity as AppCompatActivity).supportActionBar?.title =
+//            getString(R.string.diary_home_fragment_title)
 
         binding.addNewEntryButton.setOnClickListener { view: View ->
             val action =
