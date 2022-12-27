@@ -11,7 +11,7 @@
 
 
 <!--    Button labels-->
-    <string name="clearButtonLabel">Clear</string>
+    <string name="clearButtonLabel">Delete</string>
     <string name="entryCreationSaveButtonLabel">Save</string>
     <string name="entryEditModifyButtonLabel">Update</string>
     <string name="entryEditDeleteButtonLabel">Delete</string>
